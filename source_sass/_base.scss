@@ -1,1 +1,116 @@
 // Add any custom Sass & CSS here
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);
+
+body {
+	font-family: $body-font;
+	font-weight: 550;
+}
+
+.title {
+	background-color: #C7D0CC;
+	margin-top: 10px;
+	margin-bottom: 40px;
+
+	@include breakpoint(small only) {
+		margin-bottom: 10px;
+	}
+}
+#logo-container {
+	top: 0;
+	z-index: 11;
+	position: fixed;
+	height: $nav-height;
+	right: 0;
+	padding-right: 15px;
+
+	@include breakpoint(medium down) {
+		display: none;
+	}
+}
+
+h1 {
+	font-family: $body-font;
+
+	@include breakpoint(small only) {
+		font-size: 40px;
+	}
+}
+
+h2{
+	font-family: $body-font;
+
+	display: inline-block;
+	@include breakpoint(small only) {
+		font-size: 35px;
+	}
+}
+
+h3 {
+	font-family: $body-font;
+
+	@include breakpoint(small only) {
+		font-size: 25px;
+	}
+}
+
+h4 {
+	font-family: $body-font;
+}
+
+button {
+	font-weight: 600;
+}
+
+.partial {
+	margin-top: 40px;
+	width: 100%;
+
+	@include breakpoint(medium down) {
+		padding: 5px;
+	}
+}
+
+.partial-head {
+	margin-bottom: 10px;
+}
+
+a:visited, a:hover, a:link, a:active {
+	color: $nav-color;
+}
+
+.hiddenform {
+	display: none;
+	padding: 10px;
+}
+
+.list {
+	@include breakpoint(small only){
+		margin-bottom: 15px;
+	}
+}
+
+p {
+	margin-top: 10px;
+}
+
+.space {
+	margin-top: 50px;
+}
+
+.red {
+	color: red;
+	font-weight: 400;
+}
+
+.prev-next {
+	margin-top: 10px;
+}
+
+hr {
+	margin-top: 0px;
+}
+
+.error-msg {
+	display: inline-block;
+	margin-bottom: 20px;
+}

@@ -1,0 +1,54 @@
+<div>  
+	<div class="row column partial-head">
+    <h2>Edit Task</h2>
+  </div>
+  <form novalidate name="editTask">
+    <div class="row column">
+      <label>
+        Name <span class="red">*</span>
+        <input type="text" ng-model="task.name" name="name" placeholder="name" required="">
+      </label>
+      <span class="red error-msg" ng-show="editTask.name.$error.required">Name is required!</span>
+    </div>
+    <div class="row column">
+      <label>
+        Description  
+        <textarea ng-model="task.description" placeholder="description"></textarea>
+      </label>
+    </div>
+    <div class="row column">
+      <label>
+        Deadline <span class="red">*</span>
+        <input type="date" name="deadline" ng-model="task.deadline" id="datepicker" required="">
+        <span class="red error-msg" ng-show="editTask.deadline.$error.required">Deadline is required!</span>  
+        <span class="red error-msg" ng-show="editTask.deadline.$error.date">Deadline is not a valid date!</span>  
+      </label>   
+    </div>
+    <label class="row column">
+      Assigned User 
+      <select ng-options="user for user in users track by user" ng-model="selected">
+        <option value=''></option>
+      </select>  
+    </label>
+    <label class="row column">
+      Completed 
+      <fieldset>
+        <input type="radio" ng-model="completed" value="true" id="completedtrue"><label for="completedtrue">True</label>
+        <input type="radio" ng-model="completed" value="false" id="completedfalse"><label for="completedfalse">False</label>
+      </fieldset>
+    </label>
+    <div class="row column">
+        <button class="button" ng-click="submitEditTask()">Submit</button>
+    </div>
+  </form>
+  <div class="row">
+      <div class="medium-6 columns">
+      <div class="callout" id="alert" data-closable>
+        {{message}}
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>  
+</div>

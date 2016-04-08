@@ -1,0 +1,31 @@
+<div>
+	<div class="row partial-head">
+		<div class="small-10 columns">
+			<h2>Users</h2>
+		</div>
+		<div class="small-2 columns text-right">
+			<a href="#/adduser"><button class="success button" id="userplus">+</button></a>
+		</div>
+	</div>		
+	<div class="row column">
+		<table class="hover">
+			<tbody>
+				<tr ng-repeat="user in users">
+					<td width="250"><a ng-href="#/user/{{user._id}}">{{user.name}}</a></td>
+					<td width="200">{{user.email}}</td>
+					<td width="200" class="text-right"><button class="alert button" ng-click="deleteUser(user._id)">Delete</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="row">
+	    <div class="medium-6 columns">
+			<div class="callout" id="alert" data-closable>
+				{{message}}
+				<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+	</div>  
+</div>

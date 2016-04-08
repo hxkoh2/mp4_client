@@ -1,0 +1,47 @@
+<div>
+  <div class="row column partial-head">
+    <h2>Add Task</h2>
+  </div>
+  <form novalidate name="addTask">
+    <div class="row column">
+      <label>
+        Name <span class="red">*</span>
+        <input type="text" ng-model="task.name" name="name" placeholder="name" required="">
+      </label>
+      <span class="red error-msg" ng-show="addTask.name.$error.required">Name is required!</span>
+    </div>
+    <div class="row column">
+      <label>
+        Description  
+        <textarea ng-model="task.description" placeholder="description"></textarea>
+      </label>
+    </div>
+    <div class="row column">
+      <label>
+        Deadline <span class="red">*</span>
+        <input type="date" name="deadline" ng-model="task.deadline" id="datepicker" required="">  
+      </label>   
+      <span class="red error-msg" ng-show="addTask.deadline.$error.required">Deadline is required!</span>  
+      <span class="red error-msg" ng-show="addTask.deadline.$error.date">Deadline is not a valid date!</span>  
+    </div>
+    <label class="row column">
+      Assigned User 
+      <select ng-options="user for user in users track by user" ng-model="selected">
+        <option value=''></option>
+      </select>  
+    </label>
+    <div class="row column">
+        <button class="button" ng-click="submitTask()">Submit</button>
+    </div>
+  </form>
+  <div class="row">
+      <div class="medium-6 columns">
+      <div class="callout" id="alert" data-closable>
+        {{message}}
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>  
+</div>

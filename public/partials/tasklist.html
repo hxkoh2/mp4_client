@@ -1,0 +1,83 @@
+<div>
+	<div class="row partial-head partial-head">
+		<div class="small-10 columns">
+			<h2>Tasks</h2>
+		</div>
+		<div class="small-2 columns text-right">
+			<a href="#/addtask"><button class="success button">+</button></a>
+		</div>
+	</div>		
+	<div class="row">
+		<div class="small-4 columns">
+			<div class="text-left row">
+				<fieldset>
+					<div class="small-12 columns">
+						<input type="radio" ng-model="status" value="pending" id="pending"><label for="pending">Pending</label>
+					</div>
+					<div class="small-12 columns">
+						<input type="radio" ng-model="status" value="completed" id="completed"><label for="completed">Completed</label>
+					</div>
+					<div class="small-12 columns">
+						<input type="radio" ng-model="status" value="all" id="all"><label for="all">All</label>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		<div class="small-4 text-left columns">
+			<label>
+				Sort by:
+				<select ng-model="sort">
+					<option value="name">Name</option>
+					<option value="assignedUserName">Assigned Username</option>
+					<option value="dateCreated">Date Created</option>
+					<option value="deadline">Deadline</option>
+				</select>
+			</label>
+		</div>
+		<div class="small-4 columns">
+			<div class="text-left row">
+				<fieldset>
+					<div class="small-12 columns">
+						<input type="radio" ng-model="order" value="ascending" id="ascending"><label for="ascending">Ascending</label>
+					</div>
+			      	<div class="small-12 columns">
+			      		<input type="radio" ng-model="order" value="descending" id="descending"><label for="descending">Descending</label>
+			      	</div>
+			    </fieldset>
+			</div>
+		</div>
+	</div>
+	<div class="prev-next row">
+		<div class="small-6 text-left columns">
+			<button ng-class="{'disabled button':(skip<=0), 'button':(skip>0)}" ng-click="skipTasks(true)">Previous</button>
+		</div>
+		<div class="small-6 text-right columns">
+			<button ng-class="{'disabled button':(skip+limit>=all), 'button':(skip+limit<all)}" ng-click="skipTasks(false)">Next</button>
+		</div>
+	</div>
+	<div class="row column">
+		<hr>
+	</div>
+	<div class="row column">
+		<table class="hover">
+			<tbody>
+				<tr ng-repeat="task in tasks">
+					<td width="400"><a ng-href="#/task/{{task._id}}">{{task.name}}</a></td>
+					<td width="150">Deadline: {{task.deadline | date: 'MM/dd/yyyy'}}
+					<br>Assigned to: {{task.assignedUserName}}</td>
+					<td width="50" class="text-right"><button class="alert button" ng-click="deleteTask(task._id)">Delete</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="row">
+	    <div class="medium-6 columns">
+			<div class="callout" id="alert" data-closable>
+				{{message}}
+				<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+	</div>  
+</div>

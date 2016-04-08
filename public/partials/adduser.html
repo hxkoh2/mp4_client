@@ -1,0 +1,41 @@
+<div>
+  <div class="row partial-head">
+    <div class="medium-6 columns">
+      <h2>Add User</h2>
+    </div>
+  </div>    
+	<form name="adduser" novalidate id="addUserForm">
+	  <div class="row">
+      <div class="medium-6 columns">
+        <label>Name <span class="red">*</span>
+          <input type="text" name="username" ng-model="username" placeholder="name" required="">
+        </label>
+        <span class="red error-msg" ng-show="adduser.username.$error.required">Name is required!</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-6 columns">
+        <label>Email <span class="red">*</span>
+          <input type="email" name="email" ng-model="email" placeholder="email" required="">
+          <span class="red error-msg" ng-show="adduser.email.$error.required">Email is required!</span>
+          <span class="red error-msg" ng-show="adduser.email.$error.email">This is not a valid email.</span>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-6 columns">
+        <button class="button" ng-click="addUser()">Add User</button>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="medium-6 columns">
+      <div class="callout" id="alert" data-closable>
+        {{addUserMessage}}
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>  
+</div>

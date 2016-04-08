@@ -1,0 +1,39 @@
+<div>  
+	<div class="row column">
+		<h1>{{username}}</h1>
+	</div> 
+	<div class="row column">
+		<h4>{{email}}</h4>
+	</div>   
+	<div class="row column">
+		<hr>
+	</div>
+  	<div class="row column">
+  		<h3>Pending Tasks</h3>
+  	</div>
+  	<div class="row column">
+  		<table class="hover">
+  			<tbody>
+  				<tr ng-repeat="task in tasks">
+  					<td width="500"><a ng-href="#/task/{{task._id}}">{{task.name}}</a></td>
+  					<td>{{task.deadline| date:'MM/dd/yyyy'}}</td>
+  					<td class="text-right"><button class="success button" ng-click="complete(task, $index)">Completed</button></td>
+  				</tr>
+  			</tbody>
+  		</table>
+  	</div>
+  	<div class="row column text-center">
+  		<button class="button" ng-click="showCompleted()">Show Completed Tasks</button>
+  	</div>
+  	<div class="row column">
+  		<table class="hover">
+  			<tbody>
+  				<tr ng-repeat="ctask in completedTasks">
+  					<td width="500"><a ng-href="#/task/{{ctask._id}}">{{ctask.name}}</a></td>
+  					<td>{{ctask.deadline| date:'MM/dd/yyyy'}}</td>
+  					<td></td>
+  				</tr>
+  			</tbody>
+  		</table>
+  	</div>
+</div>
