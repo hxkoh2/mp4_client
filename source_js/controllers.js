@@ -7,16 +7,18 @@ mp4Controllers.controller('AddUserController', ['$scope', 'Users'  , function($s
     $('#alert').css("display", "none");
 
     $scope.addUser = function(){
-        var user = "name=" + encodeURIComponent($scope.username) + "&email=" + encodeURIComponent($scope.email);
-        Users.postUsers(user).success(function(data){
-            $scope.addUserMessage = data.message;
-            $scope.username = "";
-            $scope.email = "";
-            $('#alert').css("display", "block");
-        }).error(function(error){
-            $scope.addUserMessage = error.message;
-            $('#alert').css("display", "block");
-        });       
+        if($scope.adduser.$valid){
+            var user = "name=" + encodeURIComponent($scope.username) + "&email=" + encodeURIComponent($scope.email);
+            Users.postUsers(user).success(function(data){
+                $scope.addUserMessage = data.message;
+                $scope.username = "";
+                $scope.email = "";
+                $('#alert').css("display", "block");
+            }).error(function(error){
+                $scope.addUserMessage = error.message;
+                $('#alert').css("display", "block");
+            });       
+        }
     }
 }]);
 
@@ -131,16 +133,18 @@ mp4Controllers.controller('EditTaskController', ['$scope', 'Users', 'Tasks', '$r
     });
 
     $scope.submitEditTask = function() {
-        $scope.task.assignedUserName = $scope.selected;
-        $scope.task.completed = eval($scope.completed);
-        Tasks.putTask($scope.taskid, $scope.task, originalTask).success(function(data){
-            $scope.message = data.message;
-            $('#alert').css("display", "block");
-            getTask();
-        }).error(function(err){
-            $scope.message = err.message;
-            $('#alert').css("display", "block");
-        });
+        if($scope.editTask.$valid){
+            $scope.task.assignedUserName = $scope.selected;
+            $scope.task.completed = eval($scope.completed);
+            Tasks.putTask($scope.taskid, $scope.task, originalTask).success(function(data){
+                $scope.message = data.message;
+                $('#alert').css("display", "block");
+                getTask();
+            }).error(function(err){
+                $scope.message = err.message;
+                $('#alert').css("display", "block");
+            });
+        }
     }
 }]);
 
@@ -261,14 +265,21 @@ mp4Controllers.controller('AddTaskController', ['$scope', 'Tasks', 'Users', func
     });
 
     $scope.submitTask = function() {
-        $scope.task.assignedUserName = $scope.selected;
-        Tasks.postTasks($scope.task).success(function(data){
-            $scope.message = data.message;
-            $('#alert').css("display", "block");
-        }).error(function(err){
-            $scope.message = err.message;
-            $('#alert').css("display", "block");
-        });
+        if($scope.addTask.$valid){
+            $scope.task.assignedUserName = $scope.selected;
+            Tasks.postTasks($scope.task).success(function(data){
+                $scope.message = data.message;
+                $scope.task.name = "";
+                $scope.task.description = "";
+                $scope.task.deadline = "";
+                $scope.task.completed = false;
+                $scope.task.assignedUserName = "";
+                $('#alert').css("display", "block");
+            }).error(function(err){
+                $scope.message = err.message;
+                $('#alert').css("display", "block");
+            });
+        }
     }
 
 }]);

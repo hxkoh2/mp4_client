@@ -2,7 +2,7 @@
   <div class="row column partial-head">
     <h2>Add Task</h2>
   </div>
-  <form novalidate name="addTask">
+  <form novalidate name="addTask" ng-submit="submitTask()">
     <div class="row column">
       <label>
         Name <span class="red">*</span>
@@ -31,7 +31,7 @@
       </select>  
     </label>
     <div class="row column">
-        <button class="button" ng-click="submitTask()">Submit</button>
+        <button type="submit" class="button">Submit</button>
     </div>
   </form>
   <div class="row">

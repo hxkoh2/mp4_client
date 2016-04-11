@@ -2,7 +2,7 @@
 	<div class="row column partial-head">
     <h2>Edit Task</h2>
   </div>
-  <form novalidate name="editTask">
+  <form novalidate name="editTask" ng-submit="submitEditTask()">
     <div class="row column">
       <label>
         Name <span class="red">*</span>
@@ -38,7 +38,7 @@
       </fieldset>
     </label>
     <div class="row column">
-        <button class="button" ng-click="submitEditTask()">Submit</button>
+        <button type="submit" class="button">Submit</button>
     </div>
   </form>
   <div class="row">
